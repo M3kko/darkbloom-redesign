@@ -1,0 +1,239 @@
+/* ====================================================================== */
+/* SWATCHES (chart legends)                                               */
+/* ====================================================================== */
+.bc__sw,
+.dist__sw {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+  margin-right: 5px;
+  vertical-align: middle;
+}
+.bc__sw--in,
+.dist__sw--in {
+  background: var(--blue-tint);
+}
+.bc__sw--out,
+.dist__sw--out {
+  background: var(--blue);
+}
+
+/* ====================================================================== */
+/* TOKEN DISTRIBUTION                                                     */
+/* ====================================================================== */
+.dist {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.dist__cols {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+.dist__col {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.dist__col--r {
+  align-items: flex-end;
+  text-align: right;
+}
+.dist__val {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+.dist__val--r {
+  flex-direction: row;
+}
+.dist__num {
+  font-size: 28px;
+  color: var(--text-hi);
+  line-height: 1;
+}
+.dist__unit {
+  font-size: 12px;
+  margin-left: 1px;
+}
+.dist__pct {
+  font-size: 13px;
+  font-weight: 500;
+}
+.dist__track {
+  position: relative;
+  display: flex;
+  gap: 3px;
+  height: 16px;
+}
+.dist__seg {
+  height: 100%;
+  border-radius: 4px;
+  transform-origin: left;
+  animation: dist-grow var(--d4) var(--ease-out) both;
+}
+@keyframes dist-grow {
+  from {
+    transform: scaleX(0.001);
+    opacity: 0.4;
+  }
+}
+.dist__seg--in {
+  background: linear-gradient(90deg, var(--blue-hover), var(--blue));
+}
+.dist__seg--out {
+  background: var(--blue-tint);
+  animation-delay: 80ms;
+}
+.dist__split {
+  position: absolute;
+  top: -8px;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 5px solid var(--blue);
+}
+.dist__scale {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  color: var(--text-faint);
+}
+.dist__tick {
+  position: relative;
+  padding-top: 8px;
+}
+.dist__tick::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 1px;
+  height: 4px;
+  background: var(--line-2);
+}
+.dist__tick:first-child::before {
+  left: 0;
+}
+.dist__tick:last-child::before {
+  left: auto;
+  right: 0;
+}
+
+/* ====================================================================== */
+/* NETWORK FLOW MAP (real dotted map via dotted-map)                      */
+/* ====================================================================== */
+.map {
+  position: relative;
+  width: 100%;
+  background: radial-gradient(120% 130% at 50% -10%, var(--surface-2), var(--surface));
+  border: 1px solid var(--line);
+  border-radius: var(--r4);
+  overflow: hidden;
+  padding: 18px 16px;
+}
+.map__svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.map__land circle {
+  fill: var(--text-faint);
+  opacity: 0.7;
+}
+:root[data-theme='dark'] .map__land circle {
+  fill: var(--line-3);
+  opacity: 0.9;
+}
+.map__arc {
+  stroke: var(--blue);
+  stroke-width: 1;
+  opacity: 0.28;
+  stroke-dasharray: 2 4;
+  stroke-linecap: round;
+}
+.map__packet {
+  fill: var(--blue);
+}
+.map__halo {
+  fill: var(--blue);
+}
+.map__core {
+  fill: var(--blue);
+}
+.map__node--provider .map__core {
+  stroke: var(--surface);
+  stroke-width: 1.4;
+}
+.map__ring {
+  fill: var(--blue-tint);
+  stroke: var(--blue);
+  stroke-width: 1.2;
+}
+.map__node {
+  cursor: pointer;
+}
+.map__node:hover .map__core,
+.map__node:hover .map__ring {
+  filter: brightness(1.12);
+}
+.map__tip {
+  position: absolute;
+  transform: translate(-50%, -160%);
+  background: var(--surface);
+  border: 1px solid var(--line-3);
+  border-radius: var(--r2);
+  box-shadow: var(--sh2);
+  padding: 5px 9px;
+  font-size: 11px;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 3;
+}
+.map__legend {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  display: flex;
+  gap: 16px;
+  background: color-mix(in srgb, var(--surface) 78%, transparent);
+  backdrop-filter: blur(6px);
+  border: 1px solid var(--line);
+  border-radius: var(--r-pill);
+  padding: 6px 12px;
+}
+.map__lk {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-mid);
+}
+.map__sw {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+.map__sw--provider {
+  background: var(--blue);
+}
+.map__sw--consumer {
+  background: var(--blue-tint);
+  border: 1px solid var(--blue);
+}
+@media (max-width: 640px) {
+  .map__legend {
+    top: 12px;
+    left: 12px;
+    padding: 5px 9px;
+    gap: 10px;
+  }
+}

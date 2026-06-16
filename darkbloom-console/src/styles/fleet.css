@@ -1,0 +1,132 @@
+/* ====================================================================== */
+/* MY FLEET                                                               */
+/* ====================================================================== */
+.myfleet { display: flex; flex-direction: column; gap: 16px; }
+.myfleet__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+@media (max-width: 900px) { .myfleet__grid { grid-template-columns: 1fr; } }
+
+/* health strip */
+.fhealth { display: flex; }
+.fhealth__verdict { display: flex; align-items: center; gap: 12px; }
+.fhealth__dot {
+  width: 10px; height: 10px; border-radius: 50%;
+  background: var(--blue);
+  box-shadow: 0 0 0 4px var(--blue-tint);
+}
+.fhealth__title { font-size: 13px; }
+.fhealth .mono.dim { font-size: 11.5px; }
+
+/* attention feed */
+.afeed { display: flex; flex-direction: column; gap: 8px; }
+.afeed__item {
+  display: flex;
+  gap: 11px;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--r3);
+  background: var(--surface);
+}
+.afeed__item--fault { border-color: var(--line-3); }
+.afeed__icon { flex: none; margin-top: 1px; color: var(--text-mid); }
+.afeed__item--fault .afeed__icon { color: var(--text-hi); }
+.afeed__title { font-size: 12.5px; margin-bottom: 2px; }
+.afeed__item .mono.dim { font-size: 11.5px; line-height: 1.5; }
+
+/* machine card */
+.machine { padding: 16px; display: flex; flex-direction: column; gap: 14px; }
+.machine__head { display: flex; align-items: center; gap: 11px; }
+.machine__avatar {
+  position: relative;
+  display: grid; place-items: center;
+  width: 32px; height: 32px;
+  border-radius: var(--r2);
+  background: var(--blue-tint);
+  color: var(--blue);
+  flex: none;
+}
+.machine__pulse {
+  position: absolute; top: -2px; right: -2px;
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--blue);
+  box-shadow: 0 0 0 3px var(--surface);
+  animation: db-blink 1.4s steps(1) infinite;
+}
+.machine__id { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.machine__chip { font-size: 13px; }
+.machine__sub { font-size: 10.5px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.machine__badges { display: flex; align-items: center; gap: 7px; }
+
+.machine__verdict {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 12px;
+  border-radius: var(--r2);
+  background: var(--surface-2);
+}
+.machine__verdict--earning { background: var(--blue-tint); }
+.machine__verdicttag {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-mid);
+}
+.machine__verdict--earning .machine__verdicttag { color: var(--blue-on); }
+.machine__verdict--not-earning .machine__verdicttag { color: var(--text-hi); }
+.machine__reason { font-size: 11px; }
+
+.machine__vitals {
+  display: grid;
+  grid-template-columns: 1.4fr repeat(4, 1fr);
+  gap: 12px;
+}
+.vital { display: flex; flex-direction: column; gap: 4px; }
+.vital .mono { font-size: 12px; }
+.thermpips { display: inline-flex; gap: 3px; }
+.thermpips i { width: 6px; height: 10px; border-radius: 1px; background: var(--surface-3); }
+.thermpips i.on { background: var(--blue); }
+
+.machine__models {
+  font-size: 11px;
+  padding: 9px 11px;
+  background: var(--surface-2);
+  border-radius: var(--r2);
+}
+.machine__earn {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+}
+.machine__earn > div { display: flex; flex-direction: column; gap: 3px; }
+.machine__earn .mono { font-size: 12px; }
+.machine__disclose {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--blue);
+}
+.machine__disclose svg { transition: transform var(--d2) var(--ease); }
+.machine__slots { display: flex; flex-direction: column; gap: 8px; animation: db-rise var(--d2) var(--ease-out) both; }
+.slot {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 11.5px;
+}
+.slot .mono { color: var(--text); }
+.slot--mem { padding-top: 8px; border-top: 1px solid var(--line); }
+
+@media (max-width: 540px) {
+  .machine__vitals { grid-template-columns: 1fr 1fr; }
+}

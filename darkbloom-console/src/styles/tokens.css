@@ -1,0 +1,101 @@
+/* Darkbloom Design System · v1.2 — token reference (§12), verbatim. */
+
+:root,
+:root[data-theme='light'] {
+  /* radius */
+  --r1: 4px;
+  --r2: 6px;
+  --r3: 8px;
+  --r4: 12px;
+  --r5: 16px;
+  --r-pill: 999px;
+
+  /* type */
+  --serif: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --mono: 'Geist Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+  /* surfaces — slightly warm/creamy off-white */
+  --bg: #f6f5f0;
+  --bg-1: #efeee7;
+  --surface: #fffdf8;
+  --surface-2: #faf9f3;
+  --surface-3: #f2f0e9;
+  --hover: #f1efe7;
+  --press: #e8e6dc;
+  --line: rgba(17, 24, 39, 0.1);
+  --line-2: rgba(17, 24, 39, 0.15);
+  --line-3: rgba(17, 24, 39, 0.26);
+
+  /* text */
+  --text: #2b2f3a;
+  --text-hi: #0e1117;
+  --text-mid: #5a6172;
+  --text-dim: #8a91a1;
+  --text-faint: #c2c7d2;
+
+  /* blue — the only accent */
+  --blue: #1c39d6;
+  --blue-hover: #142ba8;
+  --blue-press: #142ba8;
+  --blue-100: #dbe1ff;
+  --blue-400: #4f66f2;
+  --blue-800: #142ba8;
+  --blue-tint: #dbe1ff;
+  --blue-on: #142ba8;
+  --blueglow: 0 0 0 3px rgba(28, 57, 214, 0.18);
+  --bloom-glow: 0 0 0 1px rgba(28, 57, 214, 0.6),
+    0 10px 28px -12px rgba(28, 57, 214, 0.3);
+
+  /* status = blue + neutral */
+  --ok: var(--blue);
+  --warn: var(--text-mid);
+  --danger: var(--text-hi);
+
+  /* elevation */
+  --sh1: 0 1px 2px rgba(17, 24, 39, 0.07);
+  --sh2: 0 6px 20px -8px rgba(17, 24, 39, 0.14);
+  --sh3: 0 18px 48px -16px rgba(17, 24, 39, 0.2);
+
+  /* motion */
+  --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --d1: 90ms;
+  --d2: 150ms;
+  --d3: 240ms;
+  --d4: 420ms;
+}
+
+:root[data-theme='dark'] {
+  --bg: #0b0b0c;
+  --bg-1: #0f0f11;
+  --surface: #141416;
+  --surface-2: #161618;
+  --surface-3: #1c1c1f;
+  --hover: #1a1a1d;
+  --press: #242427;
+  --line: rgba(255, 255, 255, 0.09);
+  --line-2: rgba(255, 255, 255, 0.15);
+  --line-3: rgba(255, 255, 255, 0.26);
+  --text: #c5cbda;
+  --text-hi: #eef1fa;
+  --text-mid: #868fa6;
+  --text-dim: #5a627a;
+  --text-faint: #383f52;
+  --blue: #5470ff;
+  --blue-hover: #6e86ff;
+  --blue-press: #3e55e0;
+  --blue-100: rgba(84, 112, 255, 0.18);
+  --blue-400: #6e86ff;
+  --blue-800: #b9c4ff;
+  --blue-tint: rgba(84, 112, 255, 0.14);
+  --blue-on: #b9c4ff;
+  --blueglow: 0 0 0 3px rgba(84, 112, 255, 0.28);
+  --bloom-glow: 0 0 0 1px rgba(84, 112, 255, 0.7),
+    0 10px 30px -12px rgba(84, 112, 255, 0.4);
+  --ok: var(--blue);
+  --warn: var(--text-mid);
+  --danger: var(--text-hi);
+  --sh1: 0 1px 2px rgba(0, 0, 0, 0.5);
+  --sh2: 0 6px 22px -8px rgba(0, 0, 0, 0.7);
+  --sh3: 0 18px 50px -14px rgba(0, 0, 0, 0.78);
+}
