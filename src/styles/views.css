@@ -21,13 +21,14 @@
   margin-top: 20px;
 }
 .grid--models {
-  grid-template-columns: 1fr 320px;
+  grid-template-columns: minmax(0, 1fr) 320px;
   align-items: start;
 }
 .models-col {
   display: flex;
   flex-direction: column;
   gap: 16px;
+  min-width: 0;
 }
 
 @media (max-width: 1000px) {
@@ -39,7 +40,7 @@
   }
   .grid--flow,
   .grid--models {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 @media (max-width: 640px) {
@@ -48,6 +49,20 @@
   }
   .grid--metrics {
     grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 520px) {
+  /* Keep two KPI columns but let the big serif numbers scale so a wide
+     value like "1,626.2/s" can't push the row past the viewport. */
+  .grid--kpi {
+    gap: 10px;
+  }
+  .kpi {
+    min-width: 0;
+    padding: 14px 14px 16px;
+  }
+  .kpi-number {
+    font-size: clamp(26px, 8.5vw, 42px);
   }
 }
 
@@ -484,6 +499,7 @@
   display: flex;
   flex-direction: column;
   gap: 18px;
+  min-width: 0;
 }
 .fleet__head {
   display: flex;
@@ -682,6 +698,17 @@
   }
   .modelcard__stats {
     grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 480px) {
+  /* Pricing-vs-baseline table: tighten so four columns still fit. */
+  .pvb__row {
+    gap: 8px;
+    font-size: 12px;
+  }
+  .pvb__save {
+    font-size: 10px;
+    padding: 3px 6px;
   }
 }
 

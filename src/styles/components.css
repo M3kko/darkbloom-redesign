@@ -483,6 +483,19 @@
   box-shadow: var(--sh1);
 }
 
+/* On narrow screens the filter pills wrap inside their track rather than
+   pushing the page wider than the viewport. */
+@media (max-width: 560px) {
+  .seg-wrap {
+    flex-wrap: wrap;
+    align-items: flex-start;
+    max-width: 100%;
+  }
+  .seg {
+    flex-wrap: wrap;
+  }
+}
+
 /* ====================================================================== */
 /* FIELD                                                                  */
 /* ====================================================================== */

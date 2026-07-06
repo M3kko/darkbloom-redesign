@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import { Menu } from 'lucide-react'
 import useReducedMotion from '../../hooks/useReducedMotion.js'
-import { useVerificationMode } from '../../lib/verification-mode.jsx'
 import E2ELockIndicator from '../trust/E2ELockIndicator.jsx'
 
 // Short, machine-register leaf for the location string. The page hero owns the
@@ -58,7 +57,6 @@ function useScrollChrome(pathname, enabled) {
 
 export default function TopBar({ onMenu }) {
   const { pathname } = useLocation()
-  const { technical, toggle } = useVerificationMode()
   const reduced = useReducedMotion()
   const isChat = pathname === '/'
   const leaf = SECTIONS[pathname] || 'Console'
@@ -79,31 +77,9 @@ export default function TopBar({ onMenu }) {
       </nav>
 
       <div className="topbar__right">
-        {/* Global attestation health — the one thing the system celebrates,
-            kept restrained: a flat blue dot, never a bloom. */}
-        <span
-          className="topbar__attest mono"
-          title="Network attestation healthy · all online nodes verified"
-        >
-          <span className="topbar__attest-dot" aria-hidden />
-          ATTEST OK
-        </span>
-
-        {/* Verification controls live only where verification is on screen. */}
-        {isChat && (
-          <>
-            <span className="topbar__div" aria-hidden />
-            <E2ELockIndicator />
-            <button
-              className={`vmode${technical ? ' is-on' : ''}`}
-              onClick={toggle}
-              title="Toggle verification detail"
-            >
-              <span className="vmode__dot" />
-              {technical ? 'Technical' : 'Normal'}
-            </button>
-          </>
-        )}
+        {/* The E2E lock is the one status worth surfacing — it lives only on
+            chat, where end-to-end encryption is actually on screen. */}
+        {isChat && <E2ELockIndicator />}
       </div>
     </header>
   )

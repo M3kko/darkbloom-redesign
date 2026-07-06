@@ -254,35 +254,6 @@
   align-items: center;
   gap: 12px;
 }
-.topbar__div {
-  width: 1px;
-  height: 18px;
-  background: var(--line-2);
-}
-
-/* Global attestation health — restrained, flat blue dot, never a bloom. */
-.topbar__attest {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  font-size: 10px;
-  font-weight: 500;
-  letter-spacing: 0.09em;
-  text-transform: uppercase;
-  color: var(--text-dim);
-  cursor: default;
-  transition: color var(--d2) var(--ease);
-}
-.topbar__attest:hover {
-  color: var(--text-mid);
-}
-.topbar__attest-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--blue);
-  flex: none;
-}
 .vmode {
   display: inline-flex;
   align-items: center;
@@ -353,17 +324,9 @@
 }
 
 @media (max-width: 560px) {
-  /* Collapse the location to just the leaf, and the status to its dot. */
+  /* Collapse the location to just the leaf to free room on narrow screens. */
   .topbar__crumb-root,
   .topbar__crumb-sep {
     display: none;
-  }
-  .topbar__attest {
-    font-size: 0;
-    gap: 0;
-  }
-  .topbar__attest-dot {
-    width: 7px;
-    height: 7px;
   }
 }
